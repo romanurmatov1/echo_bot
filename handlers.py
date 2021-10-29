@@ -11,12 +11,11 @@ neg = ['Barcelona', 'Barselona', 'barcelona', 'barselona', 'barca', 'barsa', 'Ba
 @dp.message_handler()
 async def echo(message: Message):
    count = 0
+   chat_id = message["from"]["id"]
    text = message.text
    if text in word:
-      await bot.send_message(chat_id=admin_id, text=f"'{text}' best of the best")
+      await bot.send_message(chat_id=chat_id, text=f"'{text}' best of the best")
    elif text in neg:
-      await bot.send_message(chat_id=admin_id, text=f"'{text}' bad of the bad")
+      await bot.send_message(chat_id=chat_id, text=f"'{text}' bad of the bad")
    else:
-      await bot.send_message(chat_id=admin_id, text=text)
-   
-   # await message.answer(text=text)
+      await bot.send_message(chat_id=chat_id, text=text)
